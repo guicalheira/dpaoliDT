@@ -1,7 +1,7 @@
-# Exemplo de rotina> Recissão
+# Exemplo de rotina> Recisão
 
 
-Avisos de pendencias no esoaicl
+Avisos de pendencias no esocial
 
 ## Do cliente
 Parametros para solicitação codificadas em rúbricas
