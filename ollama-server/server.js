@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Importa o framework Express para criar o servidor web
 const express = require("express");
 
@@ -17,6 +18,9 @@ const PORT = 3000;
 // Executa o comando 'ollama serve' como um processo separado
 const ollamaProcess = spawn("ollama", ["serve"]);
 
+// Variável para armazenar o estado do processo
+let ollamaRunning = true;
+
 // Captura e exibe as saídas padrão do Ollama no terminal
 ollamaProcess.stdout.on("data", (data) => {
   console.log(`Ollama: ${data}`);
@@ -27,9 +31,10 @@ ollamaProcess.stderr.on("data", (data) => {
   console.error(`Ollama Error: ${data}`);
 });
 
-// Quando o processo do Ollama for encerrado, exibe uma mensagem no terminal
+// Quando o processo do Ollama for encerrado, exibe uma mensagem no terminal e atualiza o status
 ollamaProcess.on("close", (code) => {
   console.log(`Ollama process exited with code ${code}`);
+  ollamaRunning = false;
 });
 
 // =======================================================
@@ -37,9 +42,19 @@ ollamaProcess.on("close", (code) => {
 // =======================================================
 
 // Define uma rota GET '/status' para verificar se o Ollama está rodando
-app.get("/status", (req, res) => {
-  // Retorna um JSON informando que o Ollama está ativo
-  res.json({ status: "Ollama is running" });
+app.get("/status", async (req, res) => {
+  if (!ollamaRunning) {
+    return res.json({ status: "Ollama is not running" });
+  }
+
+  try {
+    // Faz uma requisição para o Ollama e retorna a resposta
+    const response = await fetch("http://127.0.0.1:11434/api/tags");
+    const data = await response.json();
+    res.json({ status: "Ollama is running", details: data });
+  } catch (error) {
+    res.json({ status: "Ollama is running", details: "Failed to fetch details" });
+  }
 });
 
 // =======================================================
