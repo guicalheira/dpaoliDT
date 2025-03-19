@@ -3,12 +3,13 @@
 
 Verificações de propagações como no eSocial
 Ações externas> ações de confirmação com os clientes (ex:email)
+(Automações terão sua parte de verificações pelo sistema Externo)
 
-Janelas de procedimento são asyncronas umas as outras
+Janelas de procedimento do sistema Dominio são asyncronas umas as outras
 
 Exemplos comuns de eventos periódicos: Geração de folhas mensal, 13, complementare a participação de lucros (PL)
 
-Perguntar 
+Perguntar por padrões de lançamentos automaticos
 
 Excluir folha e do período antes de enviar uma com novos cálculos
 
