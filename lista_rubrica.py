@@ -68,7 +68,7 @@ def capturar_lista_rubricas(img_canto_superior="imagens_Lista_Rubrica/canto_colu
     captura.save("imagem_processada.png")
     
     # Extração de texto
-    texto = pytesseract.image_to_string(captura, lang='por', config='--psm 6')
+    texto = pytesseract.image_to_string(captura, lang='por', config='--oem 2')
     print("Texto extraído:")
     print(texto)
     
