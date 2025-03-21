@@ -11,8 +11,11 @@ Instalador:
         Será desenvolvido questões dos scripts personalizaveis, para que cada empresa possa definir valores próprios na instalção dos mesmos
     - Personalizações:
         Registro de rúbricas personalizadas na instalação
+    - Requerir utilização plena do sistema Domínio, incluindo login e senha de acesso interno para o agente
 
 ## Construções de segundo nível
+
+Trabalhos com email predeterminado do cliente: para verificação de duas etapas e captura automática de recebimentos de clientes
 
 Instruir a IA para rotinas com lançamentos (janela aberta por meio de opção de menu), como serviços de manuntenção em ações na janela de periódicos:
     Folha mensal, 13º integral e adiantado
