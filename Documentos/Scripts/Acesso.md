@@ -12,12 +12,15 @@ Acesso:
   clickar no botão com o atributo type="submit"
 - identificar campo com atributo name="password" inserir senha guardado em arquivos definido na instalação do programa
   clickar no botão com o atributo type="submit"
+- Caso "verificação 2 etapas":
+  - Pedir interfência do usuário
+   
 - condição caso exista verificação de duas etapas clicar no botão com o conteúdo "continuar depois"
 - Deixar como requisito do software geral de agente a instalação do sistema Dominio
 
 continuação com Caso1: Indentificar Janela de alerta (window.alert) com botão de "abrir" ()determinar pelo reconhecimento do texto)
 
-- Script precisa esperar o inicio do programa até o momento em que indentifica o seguinte texto "seu computador está conectando ao Domínio Web" e a janela "App controller" aparece no sistema
+- Script precisa esperar o inicio do programa por identificar na janela do navegador o texto de espera: "Aguarde, seu computador está se conectando ao domínio web.". Até o momento em que indentifica o seguinte texto "seu computador está conectando ao Domínio Web" e a janela "App controller" aparece no sistema
 - Script precisará indentificar a janela "lista de programas" e determinar a area de click pelo modulo e escolher uma das 3 primeiras opções Folha, Escrita Fiscal ou Contabilidade
 - Para acesso script precisa clicar duas vezes no icone ou clicar e apertar enter
 - Script precisa identifcar o surgimento de terceira janela com nome "Conectando..."
