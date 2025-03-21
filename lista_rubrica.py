@@ -60,15 +60,14 @@ def capturar_lista_rubricas(img_canto_superior="imagens_Lista_Rubrica/canto_colu
     
     # PRÉ-PROCESSAMENTO PARA MELHORAR OCR
     captura = captura.convert("L")  # Converter para escala de cinza
+    #captura = ImageOps.invert(captura)  # Inverter cores (ajuda no OCR)
     captura = ImageEnhance.Contrast(captura).enhance(2)  # Aumentar contraste
-    captura = ImageEnhance.Sharpness(captura).enhance(2)  # Aumentar nitidez
-    captura = ImageOps.invert(captura)  # Inverter cores (ajuda no OCR)
-    
+    #captura = ImageEnhance.Sharpness(captura).enhance(2)  # Aumentar nitidez
     # Salvar imagem para depuração
     captura.save("imagem_processada.png")
     
     # Extração de texto
-    texto = pytesseract.image_to_string(captura, lang='por', config='--oem 2')
+    texto = pytesseract.image_to_string(captura, lang='por', config=' 0 --dpi 600')
     print("Texto extraído:")
     print(texto)
     
