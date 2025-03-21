@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 import time
 import pyautogui
+import subprocess
 from pywinauto import Application
 
 def acessar_dominio():
@@ -99,8 +100,30 @@ def interagir_sistema():
     pyautogui.press("enter")
     
     print("Acesso concluído!")
+    
+def aguardar_e_executar_lista_rubrica():
+    print("Aguardando a abertura da tela desejada...")
+
+    imagem_referencia = "imagens_Acesso/imagem_dominioFolha.png"  # Ajuste para o caminho correto da imagem de referência
+    tempo_espera = 60  # Tempo máximo de espera em segundos
+    inicio = time.time()
+
+    while time.time() - inicio < tempo_espera:
+        try:
+            if pyautogui.locateCenterOnScreen(imagem_referencia, confidence=0.8):
+                print("Tela encontrada! Executando script lista_rubrica.py...")
+                subprocess.run(["python", "lista_rubrica.py"])
+                return
+        except:
+            pass  # Continua tentando encontrar a imagem
+        
+        time.sleep(2)
+
+    print("Tempo esgotado! A tela não foi encontrada.")
+    
 
 # Executar funções
 acessar_dominio()
 time.sleep(10)
 interagir_sistema()
+aguardar_e_executar_lista_rubrica()
