@@ -80,9 +80,9 @@ def aguardar_aparecer_e_executar(imagem_referencia):
 
 def executar_automacao():
     """Executa a automação passo a passo."""
-    #encontrar_e_clicar("imagens_Lista_Lancamentos/botao_lancamentos.png")
-    #aguardar_aparecer_e_executar("imagens_Lista_Lancamentos/listagem.png")
-    #encontrar_e_clicar("imagens_Lista_Lancamentos/listagem.png", 0.6)
+    encontrar_e_clicar("imagens_Lista_Lancamentos/botao_lancamentos.png")
+    aguardar_aparecer_e_executar("imagens_Lista_Lancamentos/listagem.png")
+    encontrar_e_clicar("imagens_Lista_Lancamentos/listagem.png", 0.6)
     
     # maximizar_janela()
     aguardar_aparecer_e_executar("imagens_Lista_Lancamentos/image.png")

@@ -79,11 +79,11 @@ def aguardar_aparecer_e_executar(imagem_referencia):
 
 def executar_automacao():
     """Executa a automação passo a passo."""
-    # encontrar_e_clicar("imagens_Lista_Rubrica/rubrica_icone.png")
-    # aguardar_aparecer_e_executar("imagens_Lista_Rubrica/icone_listar_rubricas.png")
-    # encontrar_e_clicar("imagens_Lista_Rubrica/icone_listar_rubricas.png", 0.6)
+    encontrar_e_clicar("imagens_Lista_Rubrica/rubrica_icone.png")
+    aguardar_aparecer_e_executar("imagens_Lista_Rubrica/icone_listar_rubricas.png")
+    encontrar_e_clicar("imagens_Lista_Rubrica/icone_listar_rubricas.png", 0.6)
     
-    # maximizar_janela()
+    #maximizar_janela()
     aguardar_aparecer_e_executar("imagens_Lista_Rubrica/image.png")
     encontrar_e_clicar("imagens_Lista_Rubrica/icone_buscar.png")
     time.sleep(2)
