@@ -10,6 +10,7 @@ def encontrar_e_clicar(imagem, confidence=0.7, timeout=10):
     while time.time() - inicio < timeout:
         posicao = pyautogui.locateCenterOnScreen(imagem, confidence=confidence)
         if posicao:
+            
             pyautogui.click(posicao)
             print("Clicado com sucesso!")
             return True
@@ -27,8 +28,8 @@ def maximizar_janela():
     else:
         print("Janela já está maximizada.")
 
-def capturar_lista_rubricas(img_canto_superior, img_canto_inferior, pasta_output="rubrica"):
-    """Captura prints da lista de rubricas e salva em uma pasta, rolando até o final."""
+def capturar_lista_listagem(img_canto_superior, img_canto_inferior, pasta_output="lancamentos"):
+    """Captura prints da lista de listagem e salva em uma pasta, rolando até o final."""
     time.sleep(2)
     os.makedirs(pasta_output, exist_ok=True)
     
@@ -51,7 +52,7 @@ def capturar_lista_rubricas(img_canto_superior, img_canto_inferior, pasta_output
     while True:
         captura = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         
-        imagem_path = os.path.join(pasta_output, f"rubrica_{contador}.png")
+        imagem_path = os.path.join(pasta_output, f"lancamento_{contador}.png")
         captura.save(imagem_path)
         print(f"Captura salva: {imagem_path}")
         
@@ -79,17 +80,17 @@ def aguardar_aparecer_e_executar(imagem_referencia):
 
 def executar_automacao():
     """Executa a automação passo a passo."""
-    # encontrar_e_clicar("imagens_Lista_Rubrica/rubrica_icone.png")
-    # aguardar_aparecer_e_executar("imagens_Lista_Rubrica/icone_listar_rubricas.png")
-    # encontrar_e_clicar("imagens_Lista_Rubrica/icone_listar_rubricas.png", 0.6)
+    #encontrar_e_clicar("imagens_Lista_Lancamentos/botao_lancamentos.png")
+    #aguardar_aparecer_e_executar("imagens_Lista_Lancamentos/listagem.png")
+    #encontrar_e_clicar("imagens_Lista_Lancamentos/listagem.png", 0.6)
     
     # maximizar_janela()
-    aguardar_aparecer_e_executar("imagens_Lista_Rubrica/image.png")
-    encontrar_e_clicar("imagens_Lista_Rubrica/icone_buscar.png")
+    aguardar_aparecer_e_executar("imagens_Lista_Lancamentos/image.png")
+    encontrar_e_clicar("imagens_Lista_Lancamentos/botao_buscar.png",0.8)
     time.sleep(2)
     
-    capturar_lista_rubricas("imagens_Lista_Rubrica/canto_coluna_codigo.png", 
-                             "imagens_Lista_Rubrica/canto_coluna_setinha_rolagem.png")
+    capturar_lista_listagem("imagens_Lista_Lancamentos/canto_coluna_lote.png", 
+                             "imagens_Lista_Lancamentos/canto_coluna_setinha_rolagem.png")
     
 if __name__ == "__main__":
     executar_automacao()

@@ -27,8 +27,8 @@ def maximizar_janela():
     else:
         print("Janela já está maximizada.")
 
-def capturar_lista_rubricas(img_canto_superior, img_canto_inferior, pasta_output="rubrica"):
-    """Captura prints da lista de rubricas e salva em uma pasta, rolando até o final."""
+def capturar_lista_listagem(img_canto_superior, img_canto_inferior, pasta_output="colaboradores"):
+    """Captura prints da lista de listagem e salva em uma pasta, rolando até o final."""
     time.sleep(2)
     os.makedirs(pasta_output, exist_ok=True)
     
@@ -51,13 +51,13 @@ def capturar_lista_rubricas(img_canto_superior, img_canto_inferior, pasta_output
     while True:
         captura = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         
-        imagem_path = os.path.join(pasta_output, f"rubrica_{contador}.png")
+        if ultima_imagem and captura.tobytes() == ultima_imagem.tobytes():
+            print("Fim da lista detectado pela repetição da imagem!")
+            break
+        
+        imagem_path = os.path.join(pasta_output, f"colaboradores_{contador}.png")
         captura.save(imagem_path)
         print(f"Captura salva: {imagem_path}")
-        
-        if ultima_imagem and captura.tobytes() == ultima_imagem.tobytes():
-            print("Fim da lista detectado pela barra de rolagem!")
-            break
         
         ultima_imagem = captura
         contador += 1
@@ -79,17 +79,17 @@ def aguardar_aparecer_e_executar(imagem_referencia):
 
 def executar_automacao():
     """Executa a automação passo a passo."""
-    # encontrar_e_clicar("imagens_Lista_Rubrica/rubrica_icone.png")
-    # aguardar_aparecer_e_executar("imagens_Lista_Rubrica/icone_listar_rubricas.png")
-    # encontrar_e_clicar("imagens_Lista_Rubrica/icone_listar_rubricas.png", 0.6)
+    #encontrar_e_clicar("imagens_Lista_Colaboradores/botao_empregados.png")
+    #aguardar_aparecer_e_executar("imagens_Lista_Colaboradores/listagem.png")
+    #encontrar_e_clicar("imagens_Lista_Colaboradores/listagem.png", 0.8)
     
-    # maximizar_janela()
-    aguardar_aparecer_e_executar("imagens_Lista_Rubrica/image.png")
-    encontrar_e_clicar("imagens_Lista_Rubrica/icone_buscar.png")
+    #maximizar_janela()
+    aguardar_aparecer_e_executar("imagens_Lista_Colaboradores/image.png")
+    encontrar_e_clicar("imagens_Lista_Colaboradores/botao_buscar.png", 0.8)
     time.sleep(2)
     
-    capturar_lista_rubricas("imagens_Lista_Rubrica/canto_coluna_codigo.png", 
-                             "imagens_Lista_Rubrica/canto_coluna_setinha_rolagem.png")
+    capturar_lista_listagem("imagens_Lista_Colaboradores/canto_coluna_codigo.png", 
+                             "imagens_Lista_Colaboradores/canto_coluna_setinha_rolagem.png")
     
 if __name__ == "__main__":
     executar_automacao()
